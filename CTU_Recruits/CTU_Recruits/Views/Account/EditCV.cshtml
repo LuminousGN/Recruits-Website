@@ -1,0 +1,256 @@
+﻿@model CTU_Recruits.Models.EditCV
+
+@{
+    ViewBag.Title = "CV Tool";
+}
+<br />
+<br />
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <form method="post" style="width: 50%;max-width: 100%;">
+        <div class="d-xl-flex justify-content-xl-start align-items-xl-center illustration">
+            <h1 class="text-left d-xl-flex justify-content-xl-start">CV Tool</h1>
+        </div>
+        <div class="form-group">
+            <h1>Work Experience</h1>
+            <div>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Email)
+                <ul class="nav nav-tabs d-xl-flex">
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-1">Tab 1</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-2">Tab 2</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-3">Tab 3</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="tab-1">
+                        <br />
+                        @Html.LabelFor(model => model.Work_Title1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_Title1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_Title1, "", new { @class = "text-danger", @value = "Title (ex. Web Developer)" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_Name1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_Name1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_Name1, "", new { @class = "text-danger", @value = "Company Name" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_Description1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_Description1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_Description1, "", new { @class = "text-danger", @value = "Description (what was your purpose?)" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_DateStart1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_DateStart1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_DateStart1, "", new { @class = "text-danger", @value = "Date Started" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_DateEnd1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_DateEnd1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_DateEnd1, "", new { @class = "text-danger", @value = "Date Ended" })
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="tab-2">
+                        <br />
+                        @Html.LabelFor(model => model.Work_Title2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_Title2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_Title2, "", new { @class = "text-danger", @placeholder = "Title (ex. Web Developer)" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_Name2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_Name2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_Name2, "", new { @class = "text-danger", @placeholder = "Company Name" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_Description2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_Description2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_Description2, "", new { @class = "text-danger", @placeholder = "Description (what was your purpose?)" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_DateStart2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_DateStart2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_DateStart2, "", new { @class = "text-danger", @placeholder = "Date Started" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_DateEnd2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_DateEnd2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_DateEnd2, "", new { @class = "text-danger", @placeholder = "Date Ended" })
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="tab-3">
+                        <br />
+                        @Html.LabelFor(model => model.Work_TItle3, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_TItle3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_TItle3, "", new { @class = "text-danger", @placeholder = "Title (ex. Web Developer)" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_Name3, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_Name3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_Name3, "", new { @class = "text-danger", @placeholder = "Company Name" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_Description3, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_Description3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_Description3, "", new { @class = "text-danger", @placeholder = "Description (what was your purpose?)" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_DateStart3, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_DateStart3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_DateStart3, "", new { @class = "text-danger", @placeholder = "Date Started" })
+                        <br />
+                        @Html.LabelFor(model => model.Work_DateEnd3, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Work_DateEnd3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Work_DateEnd3, "", new { @class = "text-danger", @placeholder = "Date Ended" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <h1>Education</h1>
+            <div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-4">Tab 1</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-5">Tab 2</a></li>
+                    <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" href="#tab-6">Tab 3</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="tab-4">
+                        <br />
+                        @Html.LabelFor(model => model.Edu_Title1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_Title1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_Title1, "", new { @class = "text-danger", @placeholder = "Title (ex.High School or Applied Physics" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_School1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_School1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_School1, "", new { @class = "text-danger", @placeholder = "Institution / School Name" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_Description1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_Description1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_Description1, "", new { @class = "text-danger", @placeholder = "Description (what exactly was it that you studied" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_DateStart1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_DateStart1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_DateStart1, "", new { @class = "text-danger", @placeholder = "Date Started" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_DateEnd1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_DateEnd1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_DateEnd1, "", new { @class = "text-danger", @placeholder = "Date Ended" })
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="tab-5">
+                        <br />
+                        @Html.LabelFor(model => model.Edu_Title2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_Title2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_Title2, "", new { @class = "text-danger", @placeholder = "Title (ex.High School or Applied Physics" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_School2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_School2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_School2, "", new { @class = "text-danger", @placeholder = "Institution / School Name" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_Description2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_Description2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_Description2, "", new { @class = "text-danger", @placeholder = "Description (what exactly was it that you studied" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_DateStart2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_DateStart2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_DateStart2, "", new { @class = "text-danger", @placeholder = "Date Started" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_DateEnd2, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_DateEnd2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_DateEnd2, "", new { @class = "text-danger", @placeholder = "Date Ended" })
+                    </div>
+
+                    <div class="tab-pane" role="tabpanel" id="tab-6">
+                        <br />
+                        @Html.LabelFor(model => model.Edu_Title3, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_Title3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_Title3, "", new { @class = "text-danger", @placeholder = "Title (ex.High School or Applied Physics" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_School3, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_School3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_School3, "", new { @class = "text-danger", @placeholder = "Institution / School Name" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_Description3, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_Description3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_Description3, "", new { @class = "text-danger", @placeholder = "Description (what exactly was it that you studied" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_DateStart3, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_DateStart3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_DateStart3, "", new { @class = "text-danger", @placeholder = "Date Started" })
+                        <br />
+                        @Html.LabelFor(model => model.Edu_DateEnd3, htmlAttributes: new { @class = "control-label col-md-2" })
+                        @Html.EditorFor(model => model.Edu_DateEnd3, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Edu_DateEnd3, "", new { @class = "text-danger", @placeholder = "Date Ended" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <h1>Top Skills</h1>
+            <br />
+            @Html.LabelFor(model => model.Skill1, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Skill1, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Skill1, "", new { @class = "text-danger", @placeholder = "1. (ex. C#)" })
+            <br />
+            @Html.LabelFor(model => model.Skill2, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Skill2, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Skill2, "", new { @class = "text-danger", @placeholder = "1. (ex. Team Management)" })
+            <br />
+            @Html.LabelFor(model => model.Skill3, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Skill3, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Skill3, "", new { @class = "text-danger", @placeholder = "1. (ex. Milling)" })
+        </div>
+        <div class="form-group">
+            <h1>Hobbies</h1>
+            <br />
+            @Html.LabelFor(model => model.Hobbies_Desc, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Hobbies_Desc, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Hobbies_Desc, "", new { @class = "text-danger", @placeholder = "Tell us what you like to do in your spare time" })
+        </div>
+        <div class="form-group">
+            <h1>Other</h1>
+            @{
+                List<SelectListItem> visibility = new List<SelectListItem>();
+                visibility.Add(new SelectListItem
+                {
+                    Text = "Public",
+                    Value = "Public",
+                    Selected = true
+                });
+                visibility.Add(new SelectListItem
+                {
+                    Text = "Private",
+                    Value = "Private",
+                });
+            }
+
+            @Html.LabelFor(model => model.Visibility, htmlAttributes: new { @class = "control-label col-md-2" })
+            <br />
+            @Html.DropDownListFor(model => model.Visibility, visibility, "-- Select Visibility --", new { htmlAttributes = new { @class = "form-control" } })
+            <br />
+            <br />
+            @{
+                List<SelectListItem> success = new List<SelectListItem>();
+                success.Add(new SelectListItem
+                {
+                    Text = "Yes!",
+                    Value = "Yes!",
+                });
+                success.Add(new SelectListItem
+                {
+                    Text = "Not just yet",
+                    Value = "No!",
+                });
+            }
+
+            @Html.LabelFor(model => model.Success, htmlAttributes: new { @class = "control-label col-md-2" })
+            <br />
+            @Html.DropDownListFor(model => model.Success, success, "-- Did you find your dream job? --", new { htmlAttributes = new { @class = "form-control" } })
+            <br />
+            <br />
+            @Html.LabelFor(model => model.CV_Category, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.CV_Category, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CV_Category, "", new { @class = "text-danger", @placeholder = "CV Category (ex. Web Development)" })
+        </div>
+
+        <div class="form-group"><input type="submit" value="Finish" class="btn btn-primary btn-block" /></div>
+    </form>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

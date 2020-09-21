@@ -1,0 +1,226 @@
+﻿@model IEnumerable<CTU_Recruits.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "PersonalCV";
+}
+
+@using Microsoft.AspNet.Identity
+<section class="portfolio-block cv">
+    @foreach (var item in Model)
+    {
+        if (User.Identity.GetUserId() == item.Id)
+        {
+            // Visiblity is required so if it is null then a CV does not currently exist which will then display a create CV button
+            if (item.Visibility == null)
+            {
+                @Html.ActionLink("Create CV", "EditCV", new { email = item.Email }, htmlAttributes: new { @class = "btn btn-primary" })
+            }
+            else
+            {
+                // if all
+
+                <div class="container">
+
+                    @if (item.Work_Title1 == null && item.Work_Name1 == null && item.Work_DateStart1 == null && item.Work_DateEnd1 == null && item.Work_Description1 == null && item.Work_Title2 == null && item.Work_Name2 == null && item.Work_DateStart2 == null && item.Work_DateEnd2 == null && item.Work_Description2 == null && item.Work_TItle3 == null && item.Work_Name3 == null && item.Work_DateStart3 == null && item.Work_DateEnd3 == null && item.Work_Description3 == null)
+                    {
+                        // if all work experience fields are empty it will not display
+                    }
+                    else
+                    {
+                        <div class="work-experience group">
+                            <div class="heading">
+                                <h2 class="text-center">Work Experience</h2>
+                            </div>
+                            @if (item.Work_Title1 == null && item.Work_Name1 == null && item.Work_DateStart1 == null && item.Work_DateEnd1 == null && item.Work_Description1 == null)
+                            {
+                                // if the tab is empty it will not display
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>@Html.DisplayFor(modelItem => item.Work_Title1)</h3>
+                                            <h4 class="organization">@Html.DisplayFor(modelItem => item.Work_Name1)</h4>
+                                        </div>
+                                        <div class="col-md-6"><span class="period">@Html.DisplayFor(modelItem => item.Work_DateStart1) - @Html.DisplayFor(modelItem => item.Work_DateEnd1)</span></div>
+                                    </div>
+                                    <p class="text-muted">@Html.DisplayFor(modelItem => item.Work_Description1)</p>
+                                </div>
+                            }
+                            @if (item.Work_Title2 == null && item.Work_Name2 == null && item.Work_DateStart2 == null && item.Work_DateEnd2 == null && item.Work_Description2 == null)
+                            {
+                                // if the tab is empty it will not display
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>@Html.DisplayFor(modelItem => item.Work_Title2)</h3>
+                                            <h4 class="organization">@Html.DisplayFor(modelItem => item.Work_Name2)</h4>
+                                        </div>
+                                        <div class="col-md-6"><span class="period">@Html.DisplayFor(modelItem => item.Work_DateStart2) - @Html.DisplayFor(modelItem => item.Work_DateEnd2)</span></div>
+                                    </div>
+                                    <p class="text-muted">@Html.DisplayFor(modelItem => item.Work_Description2)</p>
+                                </div>
+                            }
+                            @if (item.Work_TItle3 == null && item.Work_Name3 == null && item.Work_DateStart3 == null && item.Work_DateEnd3 == null && item.Work_Description3 == null)
+                            {
+                                // if the tab is empty it will not display
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>@Html.DisplayFor(modelItem => item.Work_TItle3)</h3>
+                                            <h4 class="organization">@Html.DisplayFor(modelItem => item.Work_Name3)</h4>
+                                        </div>
+                                        <div class="col-md-6"><span class="period">@Html.DisplayFor(modelItem => item.Work_DateStart3) - @Html.DisplayFor(modelItem => item.Work_DateEnd3)</span></div>
+                                    </div>
+                                    <p class="text-muted">@Html.DisplayFor(modelItem => item.Work_Description3)</p>
+                                </div>
+                            }
+                        </div>
+                    }
+                    @if (item.Edu_Title1 == null && item.Edu_School1 == null && item.Edu_DateStart1 == null && item.Edu_DateEnd1 == null && item.Edu_Description1 == null && item.Edu_Title2 == null && item.Edu_School2 == null && item.Edu_DateStart2 == null && item.Edu_DateEnd2 == null && item.Edu_Description2 == null && item.Edu_Title3 == null && item.Edu_School3 == null && item.Edu_DateStart3 == null && item.Edu_DateEnd3 == null && item.Edu_Description3 == null)
+                    {
+                        // if all education fields are empty it will not display
+                    }
+                    else
+                    {
+                        <div class="education group">
+                            <div class="heading">
+                                <h2 class="text-center">Education</h2>
+                            </div>
+                            @if (item.Edu_Title1 == null && item.Edu_School1 == null && item.Edu_DateStart1 == null && item.Edu_DateEnd1 == null && item.Edu_Description1 == null)
+                            {
+                                // if the tab is empty it will not display
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>@Html.DisplayFor(modelItem => item.Edu_Title1)</h3>
+                                            <h4 class="organization">@Html.DisplayFor(modelItem => item.Edu_School1)</h4>
+                                        </div>
+                                        <div class="col-6"><span class="period">@Html.DisplayFor(modelItem => item.Edu_DateStart1) - @Html.DisplayFor(modelItem => item.Edu_DateEnd1)</span></div>
+                                    </div>
+                                    <p class="text-muted">@Html.DisplayFor(modelItem => item.Edu_Description1)</p>
+                                </div>
+                            }
+                            @if (item.Edu_Title2 == null && item.Edu_School2 == null && item.Edu_DateStart2 == null && item.Edu_DateEnd2 == null && item.Edu_Description2 == null)
+                            {
+                                // if the tab is empty it will not display
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>@Html.DisplayFor(modelItem => item.Edu_Title2)</h3>
+                                            <h4 class="organization">@Html.DisplayFor(modelItem => item.Edu_School2)</h4>
+                                        </div>
+                                        <div class="col-6"><span class="period">@Html.DisplayFor(modelItem => item.Edu_DateStart2) - @Html.DisplayFor(modelItem => item.Edu_DateEnd2)</span></div>
+                                    </div>
+                                    <p class="text-muted">@Html.DisplayFor(modelItem => item.Edu_Description2)</p>
+                                </div>
+                            }
+                            @if (item.Edu_Title3 == null && item.Edu_School3 == null && item.Edu_DateStart3 == null && item.Edu_DateEnd3 == null && item.Edu_Description3 == null)
+                            {
+                                // if the tab is empty it will not display
+                            }
+                            else
+                            {
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h3>@Html.DisplayFor(modelItem => item.Edu_Title3)</h3>
+                                            <h4 class="organization">@Html.DisplayFor(modelItem => item.Edu_School3)</h4>
+                                        </div>
+                                        <div class="col-6"><span class="period">@Html.DisplayFor(modelItem => item.Edu_DateStart3) - @Html.DisplayFor(modelItem => item.Edu_DateEnd3)</span></div>
+                                    </div>
+                                    <p class="text-muted">@Html.DisplayFor(modelItem => item.Edu_Description3)</p>
+                                </div>
+                            }
+                        </div>
+                    }
+                    @if (item.Skill1 == null && item.Skill2 == null && item.Skill3 == null && item.Hobbies_Desc == null)
+                    {
+                        // if the other tab is empty it will not display
+                    }
+                    else
+                    {
+                        <div class="other group">
+                            <div class="row">
+                                @if (item.Skill1 == null && item.Skill2 == null && item.Skill3 == null)
+                                {
+                                    // if the skills tab is empty it will not display
+                                }
+                                else
+                                {
+                                    <div class="col-md-6">
+                                        <div class="skills portfolio-info-card">
+                                            <h2>Top Skills</h2>
+                                            @if (item.Skill1 == null)
+                                            {
+                                                // if skill1 is empty it will not display
+                                            }
+                                            else
+                                            {
+                                                <h3>1. @Html.DisplayFor(modelItem => item.Skill1)</h3>
+                                            }
+                                            @if (item.Skill2 == null)
+                                            {
+                                                // if skill2 is empty it will not display
+                                            }
+                                            else
+                                            {
+                                                <h3>2. @Html.DisplayFor(modelItem => item.Skill2)</h3>
+                                            }
+                                            @if (item.Skill3 == null)
+                                            {
+                                                // if skill3 is empty it will not display
+                                            }
+                                            else
+                                            {
+                                                <h3>3. @Html.DisplayFor(modelItem => item.Skill3)</h3>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                                @if (item.Hobbies_Desc == null)
+                                {
+                                    // if hobbies is empty it will not display
+                                }
+                                else
+                                {
+                                    <div class="col-md-6">
+                                        <div class="contact-info portfolio-info-card">
+                                            <h2 class="text-left">Hobbies</h2>
+                                            <p class="text-justify text-muted">
+                                                @Html.DisplayFor(modelItem => item.Hobbies_Desc)
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                    <div class="management group">
+                        @Html.ActionLink("Edit", "EditCV", new { email = item.Email }, htmlAttributes: new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            }
+
+        }
+        else
+        {
+
+        }
+
+    }
+</section>
+

@@ -1,0 +1,80 @@
+﻿@model CTU_Recruits.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<main class="page lanidng-page">
+    <div class="btn-toolbar d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center"
+         style="margin-top: 40px;margin-bottom: -40px;">
+        <div class="btn-group" role="group"></div>
+        <div class="btn-group" role="group"></div>
+    </div>
+</main>
+<div class="login-clean">
+    <form method="post" style="max-width: 100%;">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-personadd"></i></div>
+            <div class="form-group">@Html.ValidationSummary(true, "", new { @class = "text-danger" })</div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "First Name" })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Last Name" })
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.EditorFor(m => m.DateOfBirth, new { @class = "form-control", @placeholder = "Date of birth" })
+                @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "Contact Number" })
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.ShortDescription, new { @class = "form-control", @placeholder = "Short description of yourself" })
+                @Html.ValidationMessageFor(m => m.ShortDescription, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <div class="d-xl-flex">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*<div class="form-group">
+                    <div class="d-xl-flex">
+                        @Html.RadioButtonFor(m => m.UserRoles, "Employer", new { @class = "radio-inline" })@Html.Label("Employer")
+                        @Html.RadioButtonFor(m => m.UserRoles, "Job Seeker", new { @class = "radio-inline" })@Html.Label("Job Seeker")
+                    </div>
+                </div>*@
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserRoles, new { @class = "col-md-2 control-label" })
+                @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name, " ")
+            </div>
+            <div class="form-group">
+                <div class="d-xl-flex justify-content-xl-center align-items-xl-center">
+                    @Html.LabelFor(m => m.UserPhoto, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        <input type="file" name="Profile Picture" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" value="Register">Register</button>
+            </div><a href="#" class="forgot">Already have an account? Sign in here!</a>
+        }
+    </form>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

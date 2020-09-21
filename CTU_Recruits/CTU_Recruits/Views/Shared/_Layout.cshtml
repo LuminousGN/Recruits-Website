@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - CTU Recruits</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Login-Form-Clean.css" rel="stylesheet" />
+    <link href="~/Content/untitled.css" rel="stylesheet" />
+    <link href="~/Content/ionicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+        <div class="container">
+            <a class="navbar-brand logo" href="@Url.Action("Index", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)"> CTU Recruits</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                 id="navbarNav">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="@Url.Action("Index", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)">
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    @if (System.Web.HttpContext.Current.User.IsInRole("JobSeeker") || System.Web.HttpContext.Current.User.IsInRole("Superadmin") || System.Web.HttpContext.Current.User.IsInRole("Admin") || System.Web.HttpContext.Current.User.IsInRole("ModeratorAdmin"))
+                    {
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" href="@Url.Action("PersonalCV", null, new { area = string.Empty, controller = "Account" }, Request.Url.Scheme)">
+                                <span>CV</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+
+                    }
+
+                    @if (System.Web.HttpContext.Current.User.IsInRole("Employer") || System.Web.HttpContext.Current.User.IsInRole("Superadmin") || System.Web.HttpContext.Current.User.IsInRole("Admin") || System.Web.HttpContext.Current.User.IsInRole("ModeratorAdmin"))
+                    {
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" href="@Url.Action("ListCV", null, new { area = string.Empty, controller = "Account" }, Request.Url.Scheme)">
+                                <span>Browse CV's</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+
+                    }
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="@Url.Action("SuccessPage", null, new { area = string.Empty, controller = "Account" }, Request.Url.Scheme)">
+                            <span>Success Page</span>
+                        </a>
+                    </li>
+
+                    @if (System.Web.HttpContext.Current.User.IsInRole("Superadmin"))
+                    {
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" href="@Url.Action("Index", null, new { area = string.Empty, controller = "Role" }, Request.Url.Scheme)">
+                                <span>Create Role</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+
+                    }
+
+                    @if (System.Web.HttpContext.Current.User.IsInRole("Superadmin") || System.Web.HttpContext.Current.User.IsInRole("Admin") || System.Web.HttpContext.Current.User.IsInRole("ModeratorAdmin"))
+                    {
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" href="@Url.Action("ListUser", null, new { area = string.Empty, controller = "Account" }, Request.Url.Scheme)">
+                                <span>User List</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+
+                    }
+
+                    <li class="nav-item" role="presentation">
+                        @if (Request.IsAuthenticated)
+                        {
+
+                        }
+                        else
+                        {
+                            <a class="nav-link" href="@Url.Action("Login", null, new { area = string.Empty, controller = "Account" }, Request.Url.Scheme)">
+                                <span>Sign In</span>
+                            </a>
+                        }
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        @if (Request.IsAuthenticated)
+                        {
+                            <a class="nav-link" href="@Url.Action("Profile", null, new { area = string.Empty, controller = "Account" }, Request.Url.Scheme)">
+                                <span>Profile</span>
+                            </a>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+
+        <footer class="page-footer">
+            <div class="footer-copyright" style="margin-top: 0px;padding-top: 0px;height: 100%;">
+                <div class="links"><a href="@Url.Action("Contact", null, new { area = string.Empty, controller = "Home" }, Request.Url.Scheme)">Contact Us</a></div>
+                <p>© 2019 CTU Recruits</p>
+                <div class="addthis_inline_share_toolbox_kxs0"></div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5cff640eab80bdc9"></script>
+
+
+</body>
+</html>

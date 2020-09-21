@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Contact Us";
+}
+<main class="page contact-page">
+    <section class="portfolio-block contact">
+        <div class="container">
+            <div class="heading">
+                <h2>Contact Us</h2>
+            </div>
+            <form>
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="form-group">
+                        <h3>@ViewBag.Message</h3>
+                    </div>
+                    <div class="form-group">
+                        <label for="Email">Your Email</label>
+                        <p class="form-control item">@ViewBag.Email</p>
+                    </div>
+                    <div class="form-group">
+                        @if (ViewBag.Number != null)
+                        {
+                            <label for="Number">Contact Number</label>
+                            <p class="form-control item">@ViewBag.Number</p>
+                        }
+                        else
+                        {
+                            <label for="Number">Contact Number</label>
+                            <input class="form-control item" id="txtPhoneno" name="PhoneNo" />
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label for="Subject">Subject</label>
+                        <input class="form-control item" id="txtsubject" name="Subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="Message">Message</label>
+                        <textarea class="form-control item" name="Message" id="txtmessage"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="File">Attach File</label>
+                        <input type="file" name="file" />
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary btn-block btn-lg" type="submit" text="Send Message" />
+                    </div>
+                }
+            </form>
+        </div>
+    </section>
+</main>
+

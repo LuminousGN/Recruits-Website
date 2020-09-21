@@ -1,0 +1,68 @@
+﻿@model PagedList.IPagedList<CTU_Recruits.Models.ApplicationUser>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "ListCV";
+}
+
+<main class="page projets-page">
+    <section class="portfolio-block project-no-images">
+        <div class="container">
+            <div class="heading">
+                <h2 style="margin-bottom: 0px;">Browse CV's</h2>
+            </div>
+            @using (Html.BeginForm("ListCV", "Account", FormMethod.Get))
+            {
+                <div class="text-center d-xl-flex justify-content-xl-center align-items-xl-center" style="height: 0px;padding-bottom: 31px;width: 100%;">
+                    @Html.TextBox("SearchAll", "", new { @class = "form-control", @placeholder = "Search Via Keyword, Title, Name or Description" })
+                    <input class="btn btn-primary btn-block" type="submit" placeholder="Search" autocomplete="on" style="width: 40%;margin-top: 0px;margin-left: 0px; color:black" />
+                </div>
+            }
+            <br/>
+
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    if (item.Visibility == "Public")
+                    {
+                        <div class="col-md-6 col-lg-4">
+                            <div class="project-card-no-image">
+                                <h3>@Html.ActionLink(item.FirstName, "ListCV", new { sortOrder = ViewBag.FirstNameSortParm, currentFilter = ViewBag.CurrentFilter }) @Html.ActionLink(item.LastName, "ListCV", new { sortOrder = ViewBag.LastNameSortParm, currentFilter = ViewBag.CurrentFilter })</h3>
+                                <h4>@Html.DisplayFor(modelItem => item.ShortDescription)</h4>
+                                @Html.ActionLink("View Profile!", "ViewProfile", new { email = item.Email}, htmlAttributes: new { @class = "btn btn-primary" })
+
+                                @if (System.Web.HttpContext.Current.User.IsInRole("Superadmin") || System.Web.HttpContext.Current.User.IsInRole("Admin") || System.Web.HttpContext.Current.User.IsInRole("ModeratorAdmin"))
+                                {
+                                    @Html.ActionLink("Edit", "EditCV", new { email = item.Email}, htmlAttributes: new { @class = "btn btn-primary" })
+                                }
+                                else
+                                {
+
+                                }
+                                @if (item.CV_Category == null)
+                                {
+
+                                }
+                                else
+                                {
+                                    <div class="tags">@Html.ActionLink(item.CV_Category, "ListCV", new { sortOrder = ViewBag.TitleSortParm, currentFilter = ViewBag.CurrentFilter })</div>
+                                }
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+
+                    }
+
+                }
+            </div>
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("ListCV",
+                new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        </div>
+    </section>
+</main>
+
