@@ -10,7 +10,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="images/Screenshot.png" alt="screenshot">
+<img src="images/screenshot.png" alt="screenshot">
 
 CTU Recruits is a website that I developed as a 1st year college project in a timeframe of 2 days. 
 
